@@ -3,12 +3,12 @@ public class CuentaBancaria {
     private final String iban;
     private final String titular;
     private Double saldo = 0.0;
-    private ArrayList<String> movimientos;
+    private ArrayList<String> movimientos = new ArrayList<String>();
     private boolean notif_hacienda = false;
 
     public CuentaBancaria(String iban_arg, String titular_arg) {
-        if (iban_arg.matches("[A-Z]{2}\\d{20}")) {
-            throw new IllegalArgumentException("¡IBAN no valido!");
+        if (!iban_arg.matches("[A-Z]{2}\\d{22}")) {
+            throw new IllegalArgumentException("¡IBAN no válido!");
         }
 
         if (titular_arg.length() < 1) {
